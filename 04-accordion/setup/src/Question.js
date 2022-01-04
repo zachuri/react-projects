@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
 
 const Question = ({ title, info }) => {
-	const [toggleBtn, setToggleBtn] = useState(false);
+	const [showInfo, setShowInfo] = useState(false);
 
 	return (
 		<article className="question">
@@ -11,13 +11,13 @@ const Question = ({ title, info }) => {
 				<button
 					className="btn"
 					onClick={() => {
-						setToggleBtn(!toggleBtn);
+						setShowInfo(!showInfo);
 					}}
 				>
-					{toggleBtn ? <AiOutlineMinus /> : <AiOutlinePlus />}
+					{showInfo ? <AiOutlineMinus /> : <AiOutlinePlus />}
 				</button>
 			</header>
-			{toggleBtn && <p>{info}</p>}
+			{showInfo && <p>{info}</p>}
 		</article>
 	);
 };
