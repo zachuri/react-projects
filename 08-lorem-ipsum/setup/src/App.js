@@ -7,7 +7,20 @@ function App() {
 
 	const handleSubmit = (e) => {
 		e.preventDefault(); // Uncessary page refressh
-		setText(data);
+
+		// Watch out this is actually a string
+		console.log(typeof count);
+
+		// Change to an Int
+		let amount = parseInt(count);
+
+		if (amount <= 0) {
+			amount = 0;
+		}
+		if (amount > 8) {
+			amount = 8;
+		}
+		setText(data.slice(0, amount));
 	};
 
 	return (
