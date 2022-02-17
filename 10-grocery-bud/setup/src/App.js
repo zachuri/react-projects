@@ -46,6 +46,13 @@ function App() {
 		setList(list.filter((item) => item.id !== id));
 	};
 
+	const editItem = (id) => {
+		const specificItem = list.find((item) => item.id === id);
+		setIsEditing(true);
+		setEditID(id);
+		setName(specificItem.title);
+	};
+
 	return (
 		<section className="section-center">
 			<form className="grocery-form" onSubmit={handleSubmit}>
@@ -70,7 +77,7 @@ function App() {
 			{/* if list length is greater than 0 show clear div*/}
 			{list.length > 0 && (
 				<div className="grocery-container">
-					<List items={list} removeItem={removeItem} />
+					<List items={list} removeItem={removeItem} editItem={editItem} />
 					<button className="clear-btn" onClick={clearList}>
 						clear items
 					</button>
