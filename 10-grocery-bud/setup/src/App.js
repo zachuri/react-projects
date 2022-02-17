@@ -43,13 +43,15 @@ function App() {
 
 	const removeItem = (id) => {
 		showAlert(true, 'danger', 'item removed');
-        setList(list.filter((item) => item.id !== id))
+		setList(list.filter((item) => item.id !== id));
 	};
 
 	return (
 		<section className="section-center">
 			<form className="grocery-form" onSubmit={handleSubmit}>
-				{alert.show && <Alert {...alert} removeAlert={showAlert} />}
+				{alert.show && (
+					<Alert {...alert} removeAlert={showAlert} list={list} />
+				)}
 				<h3>grocery bud</h3>
 				<div className="form-control">
 					<input
@@ -68,7 +70,7 @@ function App() {
 			{/* if list length is greater than 0 show clear div*/}
 			{list.length > 0 && (
 				<div className="grocery-container">
-					<List items={list} removeItem={removeItem}/>
+					<List items={list} removeItem={removeItem} />
 					<button className="clear-btn" onClick={clearList}>
 						clear items
 					</button>
