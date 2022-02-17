@@ -36,7 +36,15 @@ function App() {
 		setAlert({ show, type, msg });
 	};
 
-    const 
+	const clearList = () => {
+		showAlert(true, 'danger', 'empty list');
+		setList([]);
+	};
+
+	const removeItem = (id) => {
+		showAlert(true, 'danger', 'item removed');
+        setList(list.filter((item) => item.id !== id))
+	};
 
 	return (
 		<section className="section-center">
@@ -60,8 +68,10 @@ function App() {
 			{/* if list length is greater than 0 show clear div*/}
 			{list.length > 0 && (
 				<div className="grocery-container">
-					<List items={list} />
-					<button className="clear-btn">clear items</button>
+					<List items={list} removeItem={removeItem}/>
+					<button className="clear-btn" onClick={clearList}>
+						clear items
+					</button>
 				</div>
 			)}
 		</section>
